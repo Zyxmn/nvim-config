@@ -353,6 +353,8 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Diagnostic keymaps
+vim.keymap.set('n', 'vdd', vim.diagnostic.disable, { desc = "Disable diagnostics, useful for conjure repl output log file" })
+vim.keymap.set('n', 'vde', vim.diagnostic.enable, { desc = "enable diagnostics, useful for conjure repl output log file" })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
@@ -513,4 +515,9 @@ cmp.setup {
             },
         },
     })
+
+-- Custom lsp config for haskell 
+lspconfig['hls'].setup({
+  on_attach = on_attach
+})
 --
