@@ -516,8 +516,13 @@ cmp.setup {
         },
     })
 
--- Custom lsp config for haskell 
+-- Custom lsp config for haskell
 lspconfig['hls'].setup({
   on_attach = on_attach
 })
 --
+-- Remove Trailing white spaces on Save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
